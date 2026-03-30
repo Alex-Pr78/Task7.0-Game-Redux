@@ -1,0 +1,23 @@
+.field {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  grid-template-rows: repeat(3, 80px);
+  gap: 8px;
+}
+
+.cell {
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  border: 2px solid #333;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.cell:disabled {
+  cursor: default;
+  background-color: #ddd;
+  color: #555;
+}
+
