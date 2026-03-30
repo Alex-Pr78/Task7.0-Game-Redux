@@ -1,26 +1,13 @@
 import { GameLayout } from './GameLayout';
+import { currentField } from './utils/field';
+import { WIN_PATTERNS, STATUS, PLAYER } from './constans';
 import { useState } from 'react';
 
-// содержит один из вариантов побед
-const WIN_PATTERNS = [
-	[0, 1, 2],
-	[3, 4, 5],
-	[6, 7, 8],
-	[0, 3, 6],
-	[1, 4, 7],
-	[2, 5, 8],
-	[0, 4, 8],
-	[2, 4, 6],
-];
-
-// массив игрового поля 9 клток
-const array = ['', '', '', '', '', '', '', '', ''];
-
 export const Game = () => {
-	const [currentPlayer, setCurrentPlayer] = useState('X'); // кто ходит в данный момент
-	const [isGameEnded, setIsGameEnded] = useState(false); // завершена игра
-	const [isDraw, setIsDraw] = useState(false); // была ли ничья
-	const [field, setField] = useState(array); // игровое поле
+	const [currentPlayer, setCurrentPlayer] = useState(PLAYER.CROSS); // кто ходит в данный момент
+	const [isGameEnded, setIsGameEnded] = useState(STATUS.TURN); // завершена игра
+	const [isDraw, setIsDraw] = useState(STATUS.DRAW); // была ли ничья
+	const [field, setField] = useState(currentField); // игровое поле
 
 	// Функция проверяет все выигрышные линии
 	function checkWinner(field) {
@@ -42,25 +29,25 @@ export const Game = () => {
 
 		// проверка, есть ли победитель
 		if (checkWinner(newField)) {
-			setIsGameEnded(true);
+			setIsGameEnded(STATUS.WIN);
 			return;
 		}
 
 		// условие ничьей
 		if (newField.every((cell) => cell !== '')) {
-			setIsDraw(true);
+			setIsDraw(STATUS.DRAW = true);
 			return;
 		}
 		// меняем текущего игрока
-		setCurrentPlayer(currentPlayer === 'X' ? '0' : 'X');
+		setCurrentPlayer(currentPlayer === PLAYER.CROSS ? PLAYER.NOUGHT : PLAYER.CROSS);
 	}
 
 	// функция рестарт игры
 	function restartGame() {
-		setCurrentPlayer('X');
-		setIsGameEnded(false);
-		setIsDraw(false);
-		setField(array);
+		setCurrentPlayer(PLAYER.CROSS);
+		setIsGameEnded(STATUS.TURN);
+		setIsDraw(STATUS.DRAW);
+		setField(currentField);
 	}
 
 	return (

@@ -1,12 +1,16 @@
-import PropTypes from 'prop-types';
 import { InformationLayout } from './InformationLayout';
 
 export const InformationContainer = ({ currentPlayer, isGameEnded, isDraw }) => {
-	return <InformationLayout currentPlayer={currentPlayer} isGameEnded={isGameEnded} isDraw={isDraw}/>;
+	let message = '';
+
+	if (isDraw) {
+		message = 'Ничья';
+	} else if (isGameEnded) {
+		message = `Победа: ${currentPlayer}`;
+	} else {
+		message = `Ходит: ${currentPlayer}`;
+	}
+
+	return <InformationLayout message={message} />;
 };
 
-InformationContainer.propTypes = {
-	currentPlayer: PropTypes.oneOf(['X', '0']).isRequired,
-	isGameEnded: PropTypes.bool.isRequired,
-	isDraw: PropTypes.bool.isRequired,
-};
