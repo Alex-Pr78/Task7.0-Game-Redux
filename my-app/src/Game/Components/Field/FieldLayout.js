@@ -1,13 +1,12 @@
-import PropTypes from 'prop-types';
 import styles from './FieldLayout.module.css';
 
-export const FieldLayout = ({ field, onCellClick }) => (
+export const FieldLayout = ({ field, handleCellClick }) => (
 		<div className={styles.field}>
 			{field.map((cell, index) => (
 				<button
 					key={index}
 					className={styles.cell}
-					onClick={() => onCellClick(index)}
+					onClick={() => handleCellClick(index)}
 					disabled={cell !== ''}
 					type="button"
 				>
@@ -18,7 +17,3 @@ export const FieldLayout = ({ field, onCellClick }) => (
 	);
 
 
-FieldLayout.propTypes = {
-	field: PropTypes.arrayOf(PropTypes.string).isRequired,
-	onCellClick: PropTypes.func.isRequired,
-};

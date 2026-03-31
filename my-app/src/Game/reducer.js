@@ -1,4 +1,5 @@
 import { currentField } from './utils/field';
+import {ACT} from './actions'
 import { STATUS, PLAYER } from './constans';
 
 const initialState = {

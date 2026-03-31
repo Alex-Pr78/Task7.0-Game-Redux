@@ -1,6 +1,9 @@
 import { InformationLayout } from './InformationLayout';
+import { useReduxState } from '../../redux-manager';
 
-export const InformationContainer = ({ currentPlayer, isGameEnded, isDraw }) => {
+export const InformationContainer = () => {
+	const { currentPlayer, isGameEnded, isDraw } = useReduxState();
+
 	let message = '';
 
 	if (isDraw) {
@@ -13,4 +16,3 @@ export const InformationContainer = ({ currentPlayer, isGameEnded, isDraw }) => 
 
 	return <InformationLayout message={message} />;
 };
-
