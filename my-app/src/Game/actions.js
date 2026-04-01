@@ -27,5 +27,5 @@ export const setCurrentPlayer = (currentPlayer) => ({
 })
 
 export const RESTART_GAME = {
-	type: ACTION_TYPE.RESTART_GAME,
-}
+  type: ACTION_TYPE.RESTART_GAME,
+};

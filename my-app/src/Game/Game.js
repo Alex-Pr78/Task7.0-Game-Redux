@@ -5,7 +5,7 @@ import { RESTART_GAME } from './actions';
 export const Game = () => {
 	const dispatch = useDispatch();
 
-	// функция рестарт игры
+	// рестарт игры
 		function restartGame() {
 			dispatch(RESTART_GAME);
 		}
